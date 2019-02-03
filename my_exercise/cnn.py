@@ -106,7 +106,7 @@ with tf.Session() as sess:
         train_feed_dict = {
             datas_placeholder: datas,
             labels_placeholder: labels,
-            dropout_placeholdr: 0.25
+            dropout_placeholdr: 0
         }
         for step in range(1000):
             _, mean_loss_val = sess.run([optimizer, mean_loss], feed_dict=train_feed_dict)
