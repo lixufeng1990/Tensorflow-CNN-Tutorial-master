@@ -102,7 +102,7 @@ with tf.Session() as sess:
         train_feed_dict = {
             datas_placeholder: datas,
             labels_placeholder: labels,
-            dropout_placeholdr: 0
+            dropout_placeholdr: 0.25
         }
         for step in range(150):
             _, mean_loss_val = sess.run([optimizer, mean_loss], feed_dict=train_feed_dict)
@@ -134,7 +134,7 @@ with tf.Session() as sess:
             # 将label id转换为label名
             real_label_name = label_name_dict[real_label]
             predicted_label_name = label_name_dict[predicted_label]
-            print("{}\t{} => {}".format(fpath, real_label_name, predicted_label_name))
+            #print("{}\t{} => {}".format(fpath, real_label_name, predicted_label_name))
             if real_label !=  predicted_label:
                 print("****************\n"+"{}\t{} => {}".format(fpath, real_label_name, predicted_label_name)+"****************\n")
 
