@@ -108,7 +108,7 @@ with tf.Session() as sess:
             labels_placeholder: labels,
             dropout_placeholdr: 0.25
         }
-        for step in range(100):
+        for step in range(1000):
             _, mean_loss_val = sess.run([optimizer, mean_loss], feed_dict=train_feed_dict)
 
             if step % 10 == 0:
@@ -143,7 +143,7 @@ with tf.Session() as sess:
             predicted_label_name = label_name_dict[predicted_label]
             # print("{}\t{} => {}".format(fpath, real_label_name, predicted_label_name))
             if real_label !=  predicted_label:
-                print("{}\t{} => {}".format(fpath, real_label, predicted_labels))
+                print("{}\t{} => {}".format(fpath, real_label, predicted_label))
                 count += 1
         print("all error num:",str(count))
         print("Accuracy rate：",str((len(datas)-count)/len(datas)))
