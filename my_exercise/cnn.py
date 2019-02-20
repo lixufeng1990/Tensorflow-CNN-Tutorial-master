@@ -10,6 +10,7 @@ import tensorflow as tf
 
 # 数据文件夹
 data_dir = "trainData"
+test_data_dir = "testData"
 # 训练还是测试
 train = False
 # 模型文件路径
@@ -40,6 +41,7 @@ def read_data(data_dir):
 
 
 fpaths, datas, labels = read_data(data_dir)
+test_fpaths, test_datas, test_labels = read_data(test_data_dir)
 
 # 计算有多少类图片
 num_classes = len(set(labels))
@@ -124,8 +126,8 @@ with tf.Session() as sess:
         # }
         # 定义输入和Label以填充容器，测试时dropout为0
         test_feed_dict = {
-            datas_placeholder: datas,
-            labels_placeholder: labels,
+            datas_placeholder: test_datas,
+            labels_placeholder: test_labels,
             dropout_placeholdr: 0
         }
         predicted_labels_val = sess.run(predicted_labels, feed_dict=test_feed_dict)
