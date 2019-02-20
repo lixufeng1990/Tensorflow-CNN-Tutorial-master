@@ -11,7 +11,7 @@ import tensorflow as tf
 # 数据文件夹
 data_dir = "trainData"
 # 训练还是测试
-train = True
+train = False
 # 模型文件路径
 model_path = "model/image_model"
 
@@ -115,7 +115,7 @@ with tf.Session() as sess:
         # print("测试模式")
         # 如果是测试，载入参数
         saver.restore(sess, model_path)
-        print("从{}载入模型".format(model_path))
+        # print("从{}载入模型".format(model_path))
         # label和名称的对照关系
         # label_name_dict = {
         #     0: "飞机",
