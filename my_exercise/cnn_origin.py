@@ -9,7 +9,7 @@ import tensorflow as tf
 
 
 # 数据文件夹
-data_dir = "data"
+data_dir = "trainData"
 # 训练还是测试
 train = True
 # 模型文件路径

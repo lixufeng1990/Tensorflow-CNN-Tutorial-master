@@ -15,7 +15,7 @@ import sys
 train_data_dir = "trainData"
 test_data_dir = "testData"
 # 训练还是测试
-train = False
+train = True
 # 模型文件路径
 model_path = "model/image_model"
 
@@ -47,6 +47,7 @@ fpaths, datas, labels = read_data(train_data_dir)
 
 # 计算有多少类图片
 num_classes = len(set(labels))
+print(num_classes)
 
 
 # 定义Placeholder，存放输入和标签
@@ -57,12 +58,12 @@ labels_placeholder = tf.placeholder(tf.int32, [None])
 dropout_placeholdr = tf.placeholder(tf.float32)
 
 # 定义卷积层, 20个卷积核, 卷积核大小为5，用Relu激活
-conv0 = tf.layers.conv2d(datas_placeholder, 20, 5, activation=tf.nn.relu) #32*32*3->28*28*20
+conv0 = tf.layers.conv2d(datas_placeholder, 200, 5, activation=tf.nn.relu) #32*32*3->28*28*20
 # 定义max-pooling层，pooling窗口为2x2，步长为2x2
 pool0 = tf.layers.max_pooling2d(conv0, [2, 2], [2, 2]) #28*28*20->14*14*20
 
 # 定义卷积层, 40个卷积核, 卷积核大小为4，用Relu激活
-conv1 = tf.layers.conv2d(pool0, 40, 4, activation=tf.nn.relu) #14*14*20->11*11*40
+conv1 = tf.layers.conv2d(pool0, 80, 4, activation=tf.nn.relu) #14*14*20->11*11*40
 # 定义max-pooling层，pooling窗口为2x2，步长为2x2
 pool1 = tf.layers.max_pooling2d(conv1, [2, 2], [2, 2]) #11*11*40->5*5*40
 
