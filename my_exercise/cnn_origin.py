@@ -95,7 +95,7 @@ saver = tf.train.Saver()
 with tf.Session() as sess:
 
     if train:
-        print("训练模式")
+        print("train mode")
         # 如果是训练，初始化参数
         sess.run(tf.global_variables_initializer())
         # 定义输入和Label以填充容器，训练时dropout为0.25
@@ -110,17 +110,19 @@ with tf.Session() as sess:
             if step % 10 == 0:
                 print("step = {}\tmean loss = {}".format(step, mean_loss_val))
         saver.save(sess, model_path)
-        print("训练结束，保存模型到{}".format(model_path))
+        print("train complete, save model to {}".format(model_path))
     else:
-        print("测试模式")
+        print(u"test mode")
         # 如果是测试，载入参数
         saver.restore(sess, model_path)
-        print("从{}载入模型".format(model_path))
+        print(u"from {} load model".format(model_path))
         # label和名称的对照关系
         label_name_dict = {
-            0: "飞机",
-            1: "汽车",
-            2: "鸟"
+            0: u"飞机",
+            1: u"汽车",
+            2: u"鸟",
+            3: u"猫",
+            4: u"鹿"
         }
         # 定义输入和Label以填充容器，测试时dropout为0
         test_feed_dict = {
