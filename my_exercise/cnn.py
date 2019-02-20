@@ -6,16 +6,12 @@ from PIL import Image
 #矩阵运算库
 import numpy as np
 import tensorflow as tf
-import sys
-#reload(sys)s
-#sys.setdefaultencoding( "utf-8" )
 
 
 # 数据文件夹
-train_data_dir = "trainData"
-test_data_dir = "testData"
+data_dir = "trainData"
 # 训练还是测试
-train = True
+train = False
 # 模型文件路径
 model_path = "model/image_model"
 
@@ -43,11 +39,10 @@ def read_data(data_dir):
     return fpaths, datas, labels
 
 
-fpaths, datas, labels = read_data(train_data_dir)
+fpaths, datas, labels = read_data(data_dir)
 
 # 计算有多少类图片
 num_classes = len(set(labels))
-print(num_classes)
 
 
 # 定义Placeholder，存放输入和标签
@@ -58,12 +53,12 @@ labels_placeholder = tf.placeholder(tf.int32, [None])
 dropout_placeholdr = tf.placeholder(tf.float32)
 
 # 定义卷积层, 20个卷积核, 卷积核大小为5，用Relu激活
-conv0 = tf.layers.conv2d(datas_placeholder, 200, 5, activation=tf.nn.relu) #32*32*3->28*28*20
+conv0 = tf.layers.conv2d(datas_placeholder, 20, 5, activation=tf.nn.relu) #32*32*3->28*28*20
 # 定义max-pooling层，pooling窗口为2x2，步长为2x2
 pool0 = tf.layers.max_pooling2d(conv0, [2, 2], [2, 2]) #28*28*20->14*14*20
 
 # 定义卷积层, 40个卷积核, 卷积核大小为4，用Relu激活
-conv1 = tf.layers.conv2d(pool0, 80, 4, activation=tf.nn.relu) #14*14*20->11*11*40
+conv1 = tf.layers.conv2d(pool0, 40, 4, activation=tf.nn.relu) #14*14*20->11*11*40
 # 定义max-pooling层，pooling窗口为2x2，步长为2x2
 pool1 = tf.layers.max_pooling2d(conv1, [2, 2], [2, 2]) #11*11*40->5*5*40
 
@@ -77,7 +72,7 @@ fc = tf.layers.dense(flatten, 100, activation=tf.nn.relu)
 dropout_fc = tf.layers.dropout(fc, dropout_placeholdr)
 
 # 未激活的输出层
-logits = tf.layers.dense(dropout_fc, num_classes, activation=tf.nn.relu)
+logits = tf.layers.dense(dropout_fc, num_classes)
 
 predicted_labels = tf.arg_max(logits, 1)
 
@@ -100,36 +95,33 @@ saver = tf.train.Saver()
 with tf.Session() as sess:
 
     if train:
-        print("train mode")
+        # print("训练模式")
         # 如果是训练，初始化参数
         sess.run(tf.global_variables_initializer())
         # 定义输入和Label以填充容器，训练时dropout为0.25
         train_feed_dict = {
             datas_placeholder: datas,
             labels_placeholder: labels,
-            dropout_placeholdr: 0
+            dropout_placeholdr: 0.25
         }
-        for step in range(1000):
+        for step in range(150):
             _, mean_loss_val = sess.run([optimizer, mean_loss], feed_dict=train_feed_dict)
 
             if step % 10 == 0:
                 print("step = {}\tmean loss = {}".format(step, mean_loss_val))
         saver.save(sess, model_path)
-        print("train complete, save model to {}".format(model_path))
+        # print("训练结束，保存模型到{}".format(model_path))
     else:
-        count = 0
-        print(u"test mode")
+        # print("测试模式")
         # 如果是测试，载入参数
         saver.restore(sess, model_path)
-        print(u"from {} load model".format(model_path))
+        # print("从{}载入模型".format(model_path))
         # label和名称的对照关系
-        label_name_dict = {
-            0: u"飞机",
-            1: u"汽车",
-            2: u"鸟",
-            3: u"猫",
-            4: u"鹿"
-        }
+        # label_name_dict = {
+        #     0: "飞机",
+        #     1: "汽车",
+        #     2: "鸟"
+        # }
         # 定义输入和Label以填充容器，测试时dropout为0
         test_feed_dict = {
             datas_placeholder: datas,
@@ -138,16 +130,18 @@ with tf.Session() as sess:
         }
         predicted_labels_val = sess.run(predicted_labels, feed_dict=test_feed_dict)
         # 真实label与模型预测label
+        error_count = 0
         for fpath, real_label, predicted_label in zip(fpaths, labels, predicted_labels_val):
             # 将label id转换为label名
-            real_label_name = label_name_dict[real_label]
-            predicted_label_name = label_name_dict[predicted_label]
-            # print("{}\t{} => {}".format(fpath, real_label_name, predicted_label_name))
+            # real_label_name = label_name_dict[real_label]
+            # predicted_label_name = label_name_dict[predicted_label]
+            #print("{}\t{} => {}".format(fpath, real_label_name, predicted_label_name))
             if real_label !=  predicted_label:
                 print("{}\t{} => {}".format(fpath, real_label, predicted_label))
-                count += 1
-        print("all error num:",str(count))
-        print("Accuracy rate：",str((len(datas)-count)/len(datas)))
+                error_count += 1
+        print("all error num: ", str(error_count))
+        print("Accuracy rate: ", str((len(datas)-error_count)/len(datas)))
+
 
 
 

@@ -3,11 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="665470a2-f068-48e4-a696-0da780d54743" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_exercise/cnn_origin.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_exercise/cnn_origin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_exercise/model/checkpoint" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_exercise/model/image_model.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_exercise/model/image_model.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_exercise/model/image_model.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_exercise/cnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_exercise/cnn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_exercise/cnn_origin.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -42,11 +39,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cnn_origin.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/my_exercise/cnn_origin.py">
+      <file leaf-file-name="cnn.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/my_exercise/cnn.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
-              <caret line="138" column="80" lean-forward="true" selection-start-line="138" selection-start-column="80" selection-end-line="138" selection-end-column="80" />
+            <state relative-caret-position="483">
+              <caret line="142" column="74" lean-forward="true" selection-start-line="142" selection-start-column="74" selection-end-line="142" selection-end-column="74" />
               <folding>
                 <element signature="e#15#24#0" expanded="true" />
               </folding>
@@ -57,20 +54,11 @@
       <file leaf-file-name="cnn.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cnn.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1397">
+            <state relative-caret-position="-814">
               <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
               <folding>
                 <element signature="e#15#24#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="cnn.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/my_exercise/cnn.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="564">
-              <caret line="146" column="80" lean-forward="true" selection-start-line="146" selection-start-column="16" selection-end-line="146" selection-end-column="80" />
             </state>
           </provider>
         </entry>
@@ -80,8 +68,9 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>num_classes</find>
-      <find>max_test_num_datas</find>
+      <find>test_data_dir</find>
       <find>label_name_dict</find>
+      <find>max_test_num_datas</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -91,8 +80,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/cnn.py" />
-        <option value="$PROJECT_DIR$/my_exercise/cnn.py" />
         <option value="$PROJECT_DIR$/my_exercise/cnn_origin.py" />
+        <option value="$PROJECT_DIR$/my_exercise/cnn.py" />
       </list>
     </option>
   </component>
@@ -199,7 +188,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/my_exercise/cnn_origin.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/my_exercise/cnn.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -255,14 +244,14 @@
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17195208" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17195208" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32848486" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32848486" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.28969696" />
+      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.28969696" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -279,23 +268,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/my_exercise/cnn.py</url>
-          <line>140</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/my_exercise/cnn.py</url>
-          <line>138</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/my_exercise/cnn.py</url>
-          <line>48</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="4" />
     </breakpoint-manager>
   </component>
@@ -314,6 +286,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
           <caret line="38" column="27" lean-forward="true" selection-start-line="38" selection-start-column="27" selection-end-line="38" selection-end-column="27" />
+          <folding>
+            <element signature="e#15#24#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -351,7 +326,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/cnn.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1397">
+        <state relative-caret-position="-814">
           <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
           <folding>
             <element signature="e#15#24#0" expanded="true" />
@@ -361,15 +336,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/my_exercise/cnn.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="564">
-          <caret line="146" column="80" lean-forward="true" selection-start-line="146" selection-start-column="16" selection-end-line="146" selection-end-column="80" />
+        <state relative-caret-position="-262">
+          <caret line="79" column="71" selection-start-line="79" selection-start-column="48" selection-end-line="79" selection-end-column="71" />
+          <folding>
+            <element signature="e#15#24#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/my_exercise/cnn_origin.py">
+    <entry file="file://$PROJECT_DIR$/my_exercise/cnn.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="138" column="80" lean-forward="true" selection-start-line="138" selection-start-column="80" selection-end-line="138" selection-end-column="80" />
+        <state relative-caret-position="483">
+          <caret line="142" column="74" lean-forward="true" selection-start-line="142" selection-start-column="74" selection-end-line="142" selection-end-column="74" />
           <folding>
             <element signature="e#15#24#0" expanded="true" />
           </folding>
